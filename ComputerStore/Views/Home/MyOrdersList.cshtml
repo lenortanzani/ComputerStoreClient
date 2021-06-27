@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ComputerStore.Models.Order>
+
+@{
+    ViewData["Title"] = "MyOrders";
+    List<Order> orders = ViewBag.Orders != null ? (List<Order>)ViewBag.Orders : new List<Order>();
+}
+
+@if (orders.Any())
+{
+    <h1>Мои заказы</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label>Наименование</label>
+                </th>
+                <th>
+                    <label>Кол-во</label>
+                </th>
+                <th>
+                    <label>Время заказа</label>
+                </th>
+                <th>
+                    <label>Статус</label>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in orders)
+            {
+                <tr>
+                    <td>
+                        @item.Item.Name
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.Datetimeorderplaced
+                    </td>
+                    <th>
+                        @item.Status
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

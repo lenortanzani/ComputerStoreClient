@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <div id="firstCont">
+        @using (Html.BeginForm("ItemsList", "Home", FormMethod.Post))
+        {
+            <button id="itemsList" class="firstLine">
+                <span class="btn-title">Все товары</span>
+            </button>
+        }
+
+        @using (Html.BeginForm("VideoCardsList", "Home", FormMethod.Post))
+        {
+            <button id="videoCardsList" class="firstLine">
+                <span class="btn-title">Видеокарты</span>
+            </button>
+        }
+
+        @using (Html.BeginForm("ProcessorsList", "Home", FormMethod.Post))
+        {
+            <button id="processorsList" class="firstLine">
+                <span class="btn-title">Процессоры</span>
+            </button>
+        }
+    </div>
+
+    <div id="firstCont">
+        @using (Html.BeginForm("RAMsList", "Home", FormMethod.Post))
+        {
+            <button id="ramList" class="firstLine">
+                <span class="btn-title">ОЗУ</span>
+            </button>
+        }
+
+        @using (Html.BeginForm("MotherboardsList", "Home", FormMethod.Post))
+        {
+            <button id="motherboardList" class="firstLine">
+                <span class="btn-title">Материнские платы</span>
+            </button>
+        }
+
+        @using (Html.BeginForm("HardDisksList", "Home", FormMethod.Post))
+        {
+            <button id="hardDriveList" class="firstLine">
+                <span class="btn-title">Жесткие диски</span>
+            </button>
+        }
+    </div>
+
+    <style>
+        .btn-title {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+
+        .firstLine {
+            width: 325px;
+            height: 200px;
+            float: left;
+            margin: 10px;
+        }
+
+        #firstCont {
+            display: flex;
+        }
+
+        #itemsList {
+            background-image: url(../Pics/2.jpg);
+            opacity: 0.8;
+        }
+
+        #processorsList {
+            background-image: url(../Pics/Processors.jpg);
+        }
+
+        #videoCardsList {
+            background-image: url(../Pics/VideoCards.jpg);
+        }
+
+        #ramList {
+            background-image: url(../Pics/RAMs2.jpg);
+        }
+
+        #motherboardList {
+            background-image: url(../Pics/Motherboards3.jpg);
+        }
+
+        #hardDriveList {
+            background-image: url(../Pics/HardDrives.jpg);
+        }
+    </style>
+
+</div>
+

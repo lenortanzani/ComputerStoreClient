@@ -1,0 +1,66 @@
+﻿@model ComputerStore.Models.Order
+
+@{
+    ViewData["Title"] = "CreateOrderForm";
+    Item item = (Item)ViewBag.Item;
+}
+
+<h2>Оформление заказа @item.Name</h2>
+
+<hr />
+<h3>Цена: @item.Price</h3>
+<p>@item.Characteristics</p>
+<br />
+<img src="@item.PictureUrl" width="400"/>
+<br />
+ 
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOrder" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="ItemId" class="form-control" value="@item.Id" hidden />
+
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" id="qtyfld" type="number" class="form-control" oninput="fillSum()" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label id="sum">0 $</label>
+            </div>
+ 
+            <div class="form-group">
+                <input type="submit" value="Передать заказ" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ItemsList">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function fillSum() {
+        var price = @item.Price;
+        var qty = document.getElementById("qtyfld").value;
+        if (qty < 0) {
+            document.getElementById("qtyfld").value = '0'; /*проверяет является ли число отрицательным*/
+            return;
+        }
+        document.getElementById("sum").textContent = "Итого к оплате: " + (parseInt(price) * parseInt(qty)) + " $";
+    }
+</script>

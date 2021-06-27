@@ -1,0 +1,58 @@
+﻿@model ComputerStore.Models.Item
+
+@{
+    ViewData["Title"] = "DeleteItemForm";
+}
+
+<h1>Удаление товара @Model.Name</h1>
+
+<h3>Вы уверены, что хотите удалить товар?</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Characteristics)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Characteristics)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PictureUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PictureUrl)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteItem" method="post">
+        <input asp-for="Id" hidden />
+        <input asp-for="Name" hidden />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="ItemsList">Назад</a>
+    </form>
+</div>
